@@ -1,30 +1,52 @@
-# React + TypeScript + Vite
+# BFT task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Структура данных для реализации задачи:
 
-Currently, two official plugins are available:
+**Для более динамичного и переиспользуемого подхода, можно выделить два интерфейса:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+export interface IOption {
+  value: string;
+  country?: string;
+}
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-};
+export interface ISelectors {
+    label: string;
+    options: IOption[];
+    value: string;
+}
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+**Данные могут выглядеть следующим образом:**
+
+```
+export const data = {
+  countryList: [
+    {
+      id: '1',
+      name: 'Республика Беларусь',
+      cities: ['Минск', 'Гомель'],
+      accommodation: ['Общежития', 'Не интересует'],
+    },
+    {
+      id: '2',
+      name: 'Российская Федерация',
+      cities: ['Москва', 'Сочи'],
+      accommodation: ['Общежития', 'Аренда', 'Не интересует', 'Общежития + Аренда'],
+    },
+  ],
+  univeristyField: ['Технический', 'Гуманитарный'],
+};
+
+```
+
+**В проекте использованы:**
+
+- Vite
+- Cypress (E2E tests)
+
+**В проекте настроены:**
+
+- Eslint
+- Prettier
+- Husky (pre-commit/pre-push formatting and testing)

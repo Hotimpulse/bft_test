@@ -1,9 +1,9 @@
-function App() {
+import Form from './components/Form/Form';
+
+export default function App() {
   return (
     <>
-      <div></div>
+      <Form />
     </>
   );
 }
-
-export default App;
