@@ -1,9 +1,9 @@
-import CountryForm from './components/CountryForm/CountryForm';
+import Form from './components/Form/Form';
 
 export default function App() {
   return (
     <>
-      <CountryForm />
+      <Form />
     </>
   );
 }
