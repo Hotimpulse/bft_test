@@ -1,47 +1,7 @@
 import { useReducer } from 'react';
 import formStyles from './form.module.css';
 import { data } from '@src/data/data';
-
-interface State {
-  selectedCountry: string;
-  selectedCity: string;
-  selectedUni: string;
-  selectedAccommodation: string;
-}
-
-type Action =
-  | { type: 'SET_COUNTRY'; payload: string }
-  | { type: 'SET_CITY'; payload: string }
-  | { type: 'SET_UNIVERSITY'; payload: string }
-  | { type: 'SET_ACCOMMODATION'; payload: string };
-
-const reducer = (state: State, action: Action) => {
-  switch (action.type) {
-    case 'SET_COUNTRY':
-      return {
-        ...state,
-        selectedCountry: action.payload,
-        selectedCity: '',
-        selectedUni: '',
-        selectedAccommodation: '',
-      };
-    case 'SET_CITY':
-      return { ...state, selectedCity: action.payload };
-    case 'SET_UNIVERSITY':
-      return { ...state, selectedUni: action.payload };
-    case 'SET_ACCOMMODATION':
-      return { ...state, selectedAccommodation: action.payload };
-    default:
-      return state;
-  }
-};
-
-const initialState: State = {
-  selectedCountry: '',
-  selectedCity: '',
-  selectedUni: '',
-  selectedAccommodation: '',
-};
+import { reducer, initialState } from '@src/reducer/reducer';
 
 export default function Form() {
   const [state, dispatch] = useReducer(reducer, initialState);
